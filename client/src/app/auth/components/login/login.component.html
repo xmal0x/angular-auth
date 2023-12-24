@@ -1,0 +1,11 @@
+<div class="auth">
+  <div>
+    <h2 class="title">Sign Up</h2>
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input type="email" class="input" placeholder="Email..." formControlName="email">
+      <input type="password" class="input" placeholder="Password..." formControlName="password">
+      <button class="button" type="submit" [disabled]="form.invalid">Submit</button>
+    </form>
+  </div>
+  <a routerLink="/register" class="link">Create account?</a>
+</div>

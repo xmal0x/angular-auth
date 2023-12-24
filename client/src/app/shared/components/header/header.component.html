@@ -1,0 +1,5 @@
+<header>
+  <div *ngIf="currentUserName$ | async as name">
+    <h2>Hi, {{ name }}</h2>
+  </div>
+</header>
