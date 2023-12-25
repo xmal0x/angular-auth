@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { RouterLink } from '@angular/router'
+import { Router, RouterLink } from '@angular/router'
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms'
 import { AuthService } from '../../services/auth.service'
 
@@ -19,7 +19,7 @@ export class LoginComponent {
     password: ['', Validators.required],
   })
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
   }
 
   onSubmit() {
@@ -27,6 +27,7 @@ export class LoginComponent {
       next: (user) => {
         this.authService.setCurrentUser(user)
         this.authService.setToken(user.token)
+        this.router.navigateByUrl('/')
       },
       error: (err) => {
         console.log('error login', err)

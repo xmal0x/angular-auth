@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {RouterModule} from "@angular/router";
+import { Component } from '@angular/core'
+import { RouterModule } from '@angular/router'
 import { HeaderComponent } from './shared/components/header/header.component'
 import { AuthService } from './auth/services/auth.service'
 
@@ -20,9 +20,9 @@ export class AppComponent {
         this.authService.setCurrentUser(user)
       },
       error: err => {
-        console.error('not loggin', err)
+        console.warn('not loggin', err)
         this.authService.setCurrentUser(null)
-      }
+      },
     })
   }
 }
