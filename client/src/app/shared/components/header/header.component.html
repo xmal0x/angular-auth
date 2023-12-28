@@ -1,5 +1,14 @@
 <header>
-  <div *ngIf="currentUserName$ | async as name">
-    <h2>Hi, {{ name }}</h2>
+  <div>
+    <h2 *ngIf="currentUserName$ | async as name">Hi, {{ name }}</h2>
+  </div>
+  <img src="assets/icons/menu.png" alt="menu" (click)="toggleMenu()">
+
+  <div class="menu" *ngIf="menuVisible">
+    <ul class="list">
+      <li class="list-item">
+        <button (click)="logout()">Logout</button>
+      </li>
+    </ul>
   </div>
 </header>

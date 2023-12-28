@@ -7,7 +7,7 @@ import { LoginRequestInterface } from '../types/loginRequest.interface'
 import { StorageService } from '../../shared/services/storage.service'
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private currentUserSubj$ = new BehaviorSubject<CurrentUserInterface | null | undefined>(undefined)
@@ -44,5 +44,10 @@ export class AuthService {
   getToken(): string {
     const token = this.storageService.get(this.tokenKey)
     return typeof token === 'string' ? token : ''
+  }
+
+  logout() {
+    this.storageService.remove(this.tokenKey)
+    this.currentUserSubj$.next(null)
   }
 }
